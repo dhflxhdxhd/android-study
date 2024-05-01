@@ -1,10 +1,12 @@
 package com.study.android
 
-import javax.inject.Inject
+import java.util.UUID
 
-class MyName @Inject constructor() {
+class MyName  {
+
+    private val uuid = UUID.randomUUID()
 
     override fun toString(): String {
-        return "hilt 배우기"
+        return uuid.toString()
     }
 }

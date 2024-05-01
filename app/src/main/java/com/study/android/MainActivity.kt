@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.study.android.ui.theme.AndroidStudyTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -24,8 +25,23 @@ class MainActivity : ComponentActivity() {
 //
 //    // 생성자 주입
 //    @Inject
-//    lateinit var bar:Bar
+//    lateinit var bar :Bar
 
+//    @UserQualifier(50,163)
+//    @Inject
+//    lateinit var salt:User
+//
+//    @UserQualifier(20,133)
+//    @Inject
+//    lateinit var latte:User
+
+    @Named("sc")
+    @Inject
+    lateinit var salt:User
+
+    @Named("cl")
+    @Inject
+    lateinit var latte:User
 
     lateinit var foo : Foo
     val TAG : String = MainActivity::class.java.simpleName
@@ -35,7 +51,11 @@ class MainActivity : ComponentActivity() {
 //        assert(this::foo.isInitialized) // 초기화 되지 않으면 AssertionError 발생
 //        assert(this::bar.isInitialized)
 //        assert(foo.bar!=null)
+
         assert(this::foo.isInitialized)
+
+        Log.e(TAG, "test quallifier latte ${latte.name}")
+        Log.e(TAG, "test quallifier salt ${salt.name}")
         setContent {
             AndroidStudyTheme {
                 // A surface container using the 'background' color from the theme
@@ -47,9 +67,15 @@ class MainActivity : ComponentActivity() {
     }
 
     // 메소드 주입
+//    @Inject
+//    fun injectFoo(foo : Foo){
+//        Log.e(TAG, "injectFoo ${foo.id.toString()}")
+//        this.foo = foo
+//    }
+//
     @Inject
-    fun injectFoo(foo : Foo){
-        Log.e(TAG, "injectFoo ${foo.toString()}")
+    fun injectFoo( @CustomQualifier foo : Foo){
+        Log.e(TAG, "injectFoo ${foo.id.toString()}")
         this.foo = foo
     }
 }

@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.android.library)
-    kotlin("kapt")
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    id("kotlin-kapt")
     alias(libs.plugins.hilt)
 }
 
@@ -38,15 +38,18 @@ android {
     }
 
     composeOptions{
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.2"
+    }
+
+
+    kapt {
+        correctErrorTypes = true
     }
 }
 
 
 
 dependencies {
-    implementation(project(":domain"))
-
     implementation(libs.appcompat)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -63,7 +66,19 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
     // hilt
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
+
+    // navigation
+    implementation(libs.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
+
+    // orbit
+    implementation(libs.orbit.core)
+    implementation(libs.orbit.compose)
+    implementation(libs.orbit.viewmodel)
+
+    implementation(project(":domain"))
 }

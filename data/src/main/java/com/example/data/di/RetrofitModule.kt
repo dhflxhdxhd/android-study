@@ -11,7 +11,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
-val HOST = "http://localhost:8080"
+val HOST = "http://192.168.1.197:8080"
 @Module
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {

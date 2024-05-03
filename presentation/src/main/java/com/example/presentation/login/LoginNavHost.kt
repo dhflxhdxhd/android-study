@@ -1,5 +1,6 @@
 package com.example.presentation.login
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -14,6 +15,7 @@ fun LoginNavHost() {
             route = LoginRoute.WelcomeScreen.name
         ){
             WelcomeScreen( onNavigateToLoginScreen = {
+                Log.e("honam", "로그인 페이지로 이동")
                 navController.navigate(LoginRoute.LogInScreen.name)
             })
         }

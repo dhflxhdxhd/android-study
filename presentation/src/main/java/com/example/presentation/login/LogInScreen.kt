@@ -17,13 +17,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.presentation.component.FCButton
 import com.example.presentation.component.FCTextField
 import com.example.presentation.ui.theme.AndroidStudyTheme
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 
-/*@Composable
+@Composable
 fun LoginScreen(
+    viewModel : LoginViewModel = hiltViewModel()
 
 ) {
     LoginScreen(
@@ -31,13 +34,14 @@ fun LoginScreen(
         password = "",
         onIdChange = {},
         onPasswordChange = {},
+        onNavigateToSignUpScreen = viewModel::onLoginClick
 
     )
-}*/
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(
+private fun LoginScreen(
     id:String,
     password:String,
     onIdChange:(String)->Unit,

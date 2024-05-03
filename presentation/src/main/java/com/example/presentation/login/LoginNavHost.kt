@@ -21,13 +21,7 @@ fun LoginNavHost() {
         composable(
             route = LoginRoute.LogInScreen.name
         ){
-            LoginScreen(
-                id = "deseruisse",
-                password = "mi",
-                onIdChange = {},
-                onPasswordChange = {},
-                onNavigateToSignUpScreen = {}
-            )
+            LoginScreen()
 
         }
 
